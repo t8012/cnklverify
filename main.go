@@ -64,7 +64,7 @@ type chunklistPubkey struct {
 }
 
 func readChunklistPublicKey(file *os.File) (*chunklistPubkey, error) {
-
+	return new(chunklistPubkey), nil
 }
 
 func readChunklist(file *os.File) (*chunklist, error) {
@@ -156,14 +156,14 @@ func (cl *chunklist) verify(file *os.File) []error {
 	return errors
 }
 
-func (cp chunklistPubkey) verify(bytes []uint8) bool {
+func (cp chunklistPubkey) verify(bytes []uint8) error {
 	// TODO: verify public key
-	return true
+	return nil
 }
 
-func (cp chunklistCertificate) verify(bytes []uint8) bool {
+func (cp chunklistCertificate) verify(bytes []uint8) error {
 	// TODO: verify certificate
-	return true
+	return nil
 }
 
 func main() {
